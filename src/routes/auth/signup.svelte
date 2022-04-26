@@ -1,4 +1,7 @@
 <script lang="ts">
+    import Banner from "$lib/Banner.svelte";
+    import { goto } from "$app/navigation";
+
     import { supabase } from "../../lib/supabase/client";
 
     let loading = false
@@ -76,7 +79,7 @@
     <input class="field" type="password" placeholder="**********" bind:value={password} on:input={() => checkStrength(password)} id="password">
 
     {#if password != ""}
-        <div class={"text-xs border-[1px] p-3 flex flex-col duration-200 mb-3 rounded-md " + (strongPassword ? "bg-green-100 border-green-300 text-green-700 " : "bg-red-100 border-red-300 text-red-700 ")}>
+        <Banner bannerType={strongPassword ? "success" : "error"}>
             <div class="flex items-center">
                 <input type="checkbox" id="hasLowercase" checked={hasLowercase} disabled>
                 <label class="ml-1" for="hasLowercase">Has a lowercase letter</label>
@@ -97,14 +100,16 @@
                 <input type="checkbox" id="hasMinChars" checked={hasMinChars} disabled>
                 <label class="ml-1" for="hasMinChars">Has minimum 8 characters</label>
             </div>
-        </div>
+        </Banner>
     {/if}
     
     <label for="confirm">Confirm Password</label>
     <input class="field" type="password" placeholder="**********" bind:value={confirmPassword} id="confirm" disabled={!strongPassword}>
     {#if password != confirmPassword && strongPassword}
-        <div class="text-xs border-[1px] p-3 duration-200 mb-3 rounded-md bg-red-100 border-red-300 text-red-700">Passwords do not match!</div>
+        <Banner bannerType="error">Passwords do not match!</Banner>
     {/if}
 
     <button on:click={handleLogin} class="w-full py-3 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-300 rounded-md text-white mt-3" type="submit" disabled={password != confirmPassword}>Create Account</button>
+
+    <span on:click={() => goto("/auth/login")} class="text-blue-500 hover:underline cursor-pointer mt-3 block">Already have an account? Login</span>
 </form>

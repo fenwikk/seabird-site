@@ -1,5 +1,5 @@
 <script context="module" lang="ts">
-import type { Load, LoadInput, LoadOutput } from "@sveltejs/kit/types/internal";
+    import type { LoadInput, LoadOutput } from "@sveltejs/kit/types/internal";
 
     export const load = ({ url }: LoadInput): LoadOutput => {
         const redirect = url.searchParams.get('url');

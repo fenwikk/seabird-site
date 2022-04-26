@@ -1,19 +1,21 @@
 <script>
     import "../app.css"
 
-    import {user} from "../lib/supabase/sessionStore"
     import {supabase} from "../lib/supabase/client"
     import { onMount } from 'svelte';
+    import { session } from "$lib/supabase/stores/session";
+    import { browser } from "$app/env";
 
     let path = ``;
 
     onMount(() => path = window.location.pathname);
 
-    user.set(supabase.auth.user() != null)
-
-    supabase.auth.onAuthStateChange((_, session) => {
-        user.set(session?.user != null)
-    })
+    if (browser) {
+        $session = supabase.auth.session()
+        supabase.auth.onAuthStateChange((_, currentSession) => {
+            $session = currentSession
+        })
+    }
 </script>
 
 <slot></slot>
