@@ -1,0 +1,23 @@
+/* Write your global styles here, in PostCSS syntax */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+h1,
+h2,
+h3,
+h4 {
+	@apply font-sans;
+}
+
+h1 {
+	@apply text-2xl;
+}
+
+input.field {
+    @apply w-full px-3 py-2 border-gray-300 border-[1px] rounded-md outline-none focus:border-blue-500 shadow-outline-blue mb-3 mt-1
+}
+
+.shadow-outline-blue:focus {
+    box-shadow: 0 0 0 3px rgb(59 130 246 / .45)
+}
