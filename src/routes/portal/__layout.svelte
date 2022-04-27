@@ -1,5 +1,5 @@
 <script>
-    import "../app.css"
+    import "../../app.css"
 
     import {supabase} from "../../lib/supabase/client"
     import { onMount } from 'svelte';
