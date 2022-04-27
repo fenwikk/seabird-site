@@ -4,6 +4,7 @@ module.exports = {
         extend: {
             container: {
                 center: true,
+                padding: "4.5rem"
             },
             fontFamily: {
                 "mulish": ['Mulish', 'sans-serif'],
