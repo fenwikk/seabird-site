@@ -1,7 +1,7 @@
 <script>
     import "../app.css"
 
-    import {supabase} from "../lib/supabase/client"
+    import {supabase} from "../../lib/supabase/client"
     import { onMount } from 'svelte';
     import { session } from "$lib/supabase/stores/session";
     import { browser } from "$app/env";
