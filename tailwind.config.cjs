@@ -5,6 +5,11 @@ module.exports = {
             container: {
                 center: true,
             },
+            fontFamily: {
+                "mulish": ['Mulish', 'sans-serif'],
+                "oswald": ['Oswald', 'sans-serif'],
+                "roboto": ['Roboto', 'sans-serif']
+            }
         },
     },
     plugins: [],
