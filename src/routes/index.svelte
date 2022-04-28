@@ -7,6 +7,10 @@
     let open = false
 </script>
 
+<svelte:head>
+    <title>Seabird Digital | Modern webbdesign till ett bra pris nära Göteborg</title>
+</svelte:head>
+
 <div class="absolute w-full top-6">
     <div class="container flex justify-between">
         <div class="text-white font-mulish tracking-tighter text-3xl font-thin">sea<span class="font-bold">bird</span></div>
