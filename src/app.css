@@ -3,15 +3,23 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+    @apply bg-sb-gray text-sb-black
+}
+
 h1,
 h2,
 h3,
 h4 {
-	@apply font-sans;
+	@apply font-oswald font-extrabold;
 }
 
 h1 {
-	@apply text-2xl;
+	@apply text-4xl;
+}
+
+h2 {
+    @apply text-2xl
 }
 
 input.field {
