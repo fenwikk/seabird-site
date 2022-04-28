@@ -13,7 +13,7 @@ module.exports = {
                 "brush": ['Water Brush', 'cursive'],
             },
             backgroundImage: {
-                'hero': `url('/src/lib/assets/hero.jpg')`,
+                'hero': `url('/src/lib/assets/hero.webp')`,
             },
             colors: {
                 'sb-dark-blue': "#132E40",
