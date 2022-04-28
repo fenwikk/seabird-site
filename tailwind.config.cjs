@@ -9,7 +9,8 @@ module.exports = {
             fontFamily: {
                 "mulish": ['Mulish', 'sans-serif'],
                 "oswald": ['Oswald', 'sans-serif'],
-                "roboto": ['Roboto', 'sans-serif']
+                "roboto": ['Roboto', 'sans-serif'],
+                "brush": ['Water Brush', 'cursive'],
             },
             backgroundImage: {
                 'hero': `url('/src/lib/assets/hero.jpg')`,

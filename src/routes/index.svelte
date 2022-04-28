@@ -1,4 +1,5 @@
 <script lang="ts">
+    import Section from "$lib/Section.svelte"
     import { Hamburger } from "svelte-hamburgers"
 
     let open = false
@@ -13,11 +14,15 @@
     </div>
 </div>
 
-<div class="w-full bg-hero bg-cover">
-    <div class="bg-sb-dark-blue/60 py-56">
-        <div class="container px-36">
-            <h1 class="font-oswald text-white text-6xl font-extrabold mb-3">Modern webb design<br/>till ett bra pris</h1>
-            <p class="font-roboto text-white w-[55%]">38% av alla användare lämnar en sida de tycker ser gammal ut och 95% dömer hela företaget efter deras hemsida. Vi ger dig en modern hemsida utan att bränna hål på din plånbok</p>
-        </div>
-    </div>
+<Section bgClass="bg-hero bg-cover" overlayClass="bg-sb-dark-blue/60">
+    <h1>
+        <span class="font-mulish text-white text-2xl relative top-8">Modern</span><br>
+        <span class="font-brush text-white text-8xl font-normal">webbdesign</span><br>
+        <span class="font-mulish text-white text-[37px] font-thin relative bottom-4">till ett bra pris</span>
+    </h1>
+    <p class="font-roboto text-white lg:w-[485px]">38% av alla användare lämnar en sida de tycker ser gammal ut och 95% dömer hela företaget efter deras hemsida. Vi ger dig en modern hemsida utan att bränna hål på din plånbok</p>
+</Section>
+
+<div>
+    
 </div>
