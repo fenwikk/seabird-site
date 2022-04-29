@@ -35,7 +35,7 @@
     <h1>
         <span class="font-quicksand text-white text-2xl font-normal relative top-11 left-4">Modern</span><br>
         <span class="font-brush text-white text-9xl font-normal">webbdesign</span><br>
-        <span class="font-scope text-white text-4xl font-thin relative bottom-8 left-12">till ett bra pris</span>
+        <span class="font-scope text-white text-4xl font-thin relative bottom-7 left-12">till ett bra pris</span>
     </h1>
 </Section>
 
