@@ -17,13 +17,13 @@
         </div>
         <div class="">
             <ul class="flex justify-end items-center text-white text-xl font-mulish font-thin">
-                <li class="mx-2 border-b-4 border-transparent pt-1 hover:border-sb-orange hover:pt-[8px] hover:pb-1 duration-150">Tjänster</li>
-                <li class="mx-2 border-b-4 border-transparent pt-1 hover:border-sb-orange hover:pt-[8px] hover:pb-1 duration-150">Vilka vi är</li>
-                <li class="mx-2 border-b-4 border-transparent pt-1 hover:border-sb-orange hover:pt-[8px] hover:pb-1 duration-150">Kunskapsbank</li>
+                <li class="cursor-pointer mx-2 border-b-4 border-transparent pt-1 hover:border-sb-orange hover:pt-[8px] hover:pb-1 duration-150">Tjänster</li>
+                <li class="cursor-pointer mx-2 border-b-4 border-transparent pt-1 hover:border-sb-orange hover:pt-[8px] hover:pb-1 duration-150">Vilka vi är</li>
+                <li class="cursor-pointer mx-2 border-b-4 border-transparent pt-1 hover:border-sb-orange hover:pt-[8px] hover:pb-1 duration-150">Kunskapsbank</li>
 
                 <span class="h-8 w-[1px] bg-white mx-4" />
 
-                <li class="mx-2 border-b-4 border-transparent pt-1 hover:border-sb-orange hover:pt-[8px] hover:pb-1 duration-150">Logga in</li>
+                <li class="cursor-pointer mx-2 border-b-4 border-transparent pt-1 hover:border-sb-orange hover:pt-[8px] hover:pb-1 duration-150">Logga in</li>
 
                 <button class="bg-sb-orange rounded-full py-[10px] p-7 ml-2 hover:bg-white hover:text-sb-orange duration-150">Kontakt</button>
             </ul>
