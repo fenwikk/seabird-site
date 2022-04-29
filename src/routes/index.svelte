@@ -41,6 +41,6 @@
 
 <Section id="uc" class="flex flex-col items-center">
     <img class="h-56 w-[22rem] mb-8" src={underConstruction} alt="Two people building a house">
-    <h2 class="text-sb-black/75">Våran sida är under konstruktion</h2>
+    <h2 class="text-sb-black/75">Vår sida är under konstruktion</h2>
     <p class="text-sb-black/50">Vi jobbar med det för att ge dig den bästa upplevelsen!</p>
 </Section>
