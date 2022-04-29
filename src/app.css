@@ -29,3 +29,51 @@ input.field {
 .shadow-outline-blue:focus {
     box-shadow: 0 0 0 3px rgb(59 130 246 / .45)
 }
+
+.icon-scroll,
+.icon-scroll:before {
+    position: absolute;
+    left: 50%;
+    bottom: 2rem;
+}
+
+.icon-scroll {
+    width: 30px;
+    height: 52.5px;
+    margin-left: -15px;
+    margin-top: -26.25px;
+    box-shadow: inset 0 0 0 1px #fff;
+    border-radius: 20px;
+}
+
+.icon-scroll:before {
+    content: '';
+    width: 4px;
+    height: 4px;
+    background: #fff;
+    margin-left: -2px;
+    top: 8px;
+    border-radius: 3px;
+    animation-duration: 2.5s;
+    animation-iteration-count: infinite;
+    animation-name: scroll;
+}
+
+@keyframes scroll {
+    0% {
+        opacity: 0;
+        transform: translateY(4px);
+    }
+    25% {
+        opacity: 1;
+        transform: translateY(-2px);
+    }
+    75% {
+        opacity: 0;
+        transform: translateY(32.5px);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(32.5px);
+    }
+}
