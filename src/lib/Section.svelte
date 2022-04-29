@@ -5,10 +5,11 @@
     export let paddingClass: string = "md:px-36 py-44"
     
     let classes: string = ""
-    export { classes as class}
+    let sectionId: string = ""
+    export { classes as class, sectionId as id}
 </script>
 
-<div class="w-full {bgClass}">
+<div class="w-full {bgClass}" id={sectionId}>
     <div class={overlayClass}>
         <div class="container {paddingClass} {classes}">
             <slot></slot>
