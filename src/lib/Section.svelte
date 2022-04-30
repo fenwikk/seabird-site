@@ -20,15 +20,17 @@
             let mouseX = e.clientX;
             let mouseY = e.clientY;
 
-            parallaxStyle = [`background-position: ${50 - (mouseX - w) * 0.01}% ${50 - (mouseY - h) * 0.01}%; background-size: 105%;`, `right: ${(mouseX - w) * 0.005}px; bottom: ${(mouseY - h) * 0.01}px;`];
+            parallaxStyle = [`background-position: ${50 - (mouseX - w) * 0.01}% ${50 - (mouseY - h) * 0.01}%; background-size: 105%;`, `right: ${(mouseX - w) * 0.005}px; bottom: ${(mouseY - h) * 0.01}px; transform: perspective(2000px) rotateY(${(mouseX - w) * .02}deg) rotateX(${(mouseY - h) * 0.02 * -1}deg);`];
         }
     }
 </script>
 
 <div on:mousemove={applyParallax} class="w-full {bgClass}" id={sectionId} style={parallaxStyle[0]}>
     <div class={overlayClass}>
-        <div class="container relative {paddingClass} {classes}" style={parallaxStyle[1]}>
+        <div class="container relative {paddingClass} {classes}">
+            <div style={parallaxStyle[1]}>
                 <slot></slot>
+            </div>
         </div>
 
         <buttton on:click={() => { scrollTo({ element: "#uc" }) }} class="icon-scroll cursor-pointer"></buttton>
