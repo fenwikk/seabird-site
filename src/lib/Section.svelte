@@ -25,7 +25,9 @@
     }
 </script>
 
-<div on:mousemove={applyParallax} class="w-full {bgClass}" id={sectionId} style={parallaxStyle[0]}>
+<svelte:window on:mousemove={applyParallax} />
+
+<div class="w-full {bgClass}" id={sectionId} style={parallaxStyle[0]}>
     <div class={overlayClass}>
         <div class="container relative {paddingClass} {classes}">
             <div style={parallaxStyle[1]}>
