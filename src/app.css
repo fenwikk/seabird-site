@@ -3,15 +3,24 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+    font-family: 'Specify ExExp';
+    src: url('/fonts/SpecifyExExp.ttf')
+}
+@font-face {
+    font-family: 'Specify Exp';
+    src: url('/fonts/SpecifyExp.ttf')
+}
+
 body {
-    @apply bg-sb-gray text-sb-black
+    @apply overflow-x-hidden
 }
 
 h1,
 h2,
 h3,
 h4 {
-	@apply font-oswald font-extrabold;
+	@apply font-paytone font-extrabold;
 }
 
 h1 {
@@ -30,50 +39,12 @@ input.field {
     box-shadow: 0 0 0 3px rgb(59 130 246 / .45)
 }
 
-.icon-scroll,
-.icon-scroll:before {
-    position: absolute;
-    left: 50%;
-    bottom: 2rem;
+.hard-shadow {
+    box-shadow: 5px 5px black;
+
+    @apply duration-150
 }
 
-.icon-scroll {
-    width: 30px;
-    height: 52.5px;
-    margin-left: -15px;
-    margin-top: -26.25px;
-    box-shadow: inset 0 0 0 1px #fff;
-    border-radius: 20px;
-}
-
-.icon-scroll:before {
-    content: '';
-    width: 4px;
-    height: 4px;
-    background: #fff;
-    margin-left: -2px;
-    top: 8px;
-    border-radius: 3px;
-    animation-duration: 2.5s;
-    animation-iteration-count: infinite;
-    animation-name: scroll;
-}
-
-@keyframes scroll {
-    0% {
-        opacity: 0;
-        transform: translateY(4px);
-    }
-    25% {
-        opacity: 1;
-        transform: translateY(-2px);
-    }
-    75% {
-        opacity: 0;
-        transform: translateY(32.5px);
-    }
-    100% {
-        opacity: 0;
-        transform: translateY(32.5px);
-    }
+.hard-shadow:hover {
+    box-shadow: 0px 0px black;
 }

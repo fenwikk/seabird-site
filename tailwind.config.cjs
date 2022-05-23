@@ -7,14 +7,10 @@ module.exports = {
                 padding: "4.5rem"
             },
             fontFamily: {
+                "paytone": ["Paytone One", "display"],
                 "mulish": ["Mulish", "sans-serif"],
-                "oswald": ["Oswald", "sans-serif"],
-                "quicksand": ["Quicksand", "sans-serif"],
-                "roboto": ["Roboto", "sans-serif"],
-
-                "scope": ["Scope One", "serif"],
-
-                "brush": ["Water Brush", "cursive"],
+                "specify-ex": ["Specify ExExp", "sans-serif"],
+                "specify": ["Specify Exp", "sans-serif"],
             },
             backgroundImage: {
                 "hero": `url("/src/lib/assets/hero.webp")`,
