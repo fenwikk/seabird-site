@@ -1,6 +1,6 @@
 <script>
     import "../app.css"
-    import Favicon from "$lib/assets/fav.ico"
+    import Favicon from "$lib/assets/blob.ico"
 </script>
 
 <svelte:head>
