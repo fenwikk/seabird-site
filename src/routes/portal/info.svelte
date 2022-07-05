@@ -55,7 +55,7 @@ import { supabase } from "$lib/supabase/client";
             </div>
         </div>
     </div>
-    <div class="container p-6">
+    <div class="container py-6">
         <div>
             <label for="title">Title</label>
             <input id="title" class="field" placeholder={$currentSite?.site_info.title} bind:value={title} />
