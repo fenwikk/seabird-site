@@ -45,10 +45,6 @@
 	};
 </script>
 
-<svelte:head>
-    <title>Sea Portal | {$currentSite?.site_info.title}</title>
-</svelte:head>
-
 <script lang="ts">
 	import { user } from '$lib/supabase/stores/user';
 	import Select from 'svelte-select';
@@ -59,9 +55,10 @@
 	import chevron from '$lib/assets/chevron.png';
 	import SelectIcon from '$lib/components/SelectIcon.svelte';
 	import { goto } from '$app/navigation';
+	import Auth from '$lib/components/Auth.svelte';
 
-    export let fetchedSites: Site[]
-    sites.set(fetchedSites)
+	export let fetchedSites: Site[];
+	sites.set(fetchedSites);
 
 	let items = $sites.map((site, i) => {
 		return { value: i, label: site.site_info.title };
@@ -88,50 +85,58 @@
 	});
 </script>
 
-<div class="border-b">
-	<div class="container">
-		<div class="py-4 flex items-center">
-			<div class="flex items-center">
-				<img src={blob} class="w-12 h-12" alt="" />
-				<div class="mx-5">
-					<div class="w-[1px] h-8 rotate-12 bg-black/25" />
-				</div>
-				<div class="select w-52">
-					<Select
-                        bind:items={items}
-						Icon={SelectIcon}
-						iconProps={{ ico: $currentSite?.site_info.ico_url }}
-						value={items[0]}
-						isClearable={false}
-						showIndicator={true}
-						indicatorSvg="<img src={chevron} alt=''>"
-						on:select={handleSelect}
-					/>
+<svelte:head>
+	<title>Sea Portal | {$currentSite?.site_info.title}</title>
+</svelte:head>
+
+<div>
+	{#if $user}
+		{#if $profile}
+			<div class="border-b">
+				<div class="container">
+					<div class="py-4 flex items-center">
+						<div class="flex items-center">
+							<img src={blob} class="w-12 h-12" alt="" />
+							<div class="mx-5">
+								<div class="w-[1px] h-8 rotate-12 bg-black/25" />
+							</div>
+							<div class="select w-52">
+								<Select
+									bind:items
+									Icon={SelectIcon}
+									iconProps={{ ico: $currentSite?.site_info.ico_url }}
+									value={items[0]}
+									isClearable={false}
+									showIndicator={true}
+									indicatorSvg="<img src={chevron} alt=''>"
+									on:select={handleSelect}
+								/>
+							</div>
+						</div>
+					</div>
+					<ul class="flex">
+						<li
+							on:click={() => goto('/portal/')}
+							class="border-b-2 border-transparent hover:border-black py-2 mx-3"
+						>
+							Home
+						</li>
+						<li
+							on:click={() => goto('/portal/info')}
+							class="border-b-2 border-transparent hover:border-black py-2 mx-3"
+						>
+							Site Info
+						</li>
+					</ul>
 				</div>
 			</div>
-		</div>
-		<ul class="flex">
-			<li
-				on:click={() => goto('/portal/')}
-				class="border-b-2 border-transparent hover:border-black py-2 mx-3"
-			>
-				Home
-			</li>
-			<li
-				on:click={() => goto('/portal/info')}
-				class="border-b-2 border-transparent hover:border-black py-2 mx-3"
-			>
-				Site Info
-			</li>
-			<li
-				on:click={() => goto('/portal/pages')}
-				class="border-b-2 border-transparent hover:border-black py-2 mx-3"
-			>
-				Pages
-			</li>
-		</ul>
-	</div>
-</div>
-<div>
-	<slot />
+			<div>
+				<slot />
+			</div>
+		{:else}
+			No Profile
+		{/if}
+	{:else}
+		<Auth />
+	{/if}
 </div>
