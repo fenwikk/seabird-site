@@ -10,7 +10,7 @@
 			loading = true;
 			const { error } = await supabase.auth.signIn({ email }, { redirectTo: location.href});
 			if (error) throw error;
-			alert('Check your email for the login link!');
+			alert('Check your email for the login link! Redirect to ' + location.href);
 		} catch (error: any) {
 			alert(error.error_description || error.message);
 		} finally {
