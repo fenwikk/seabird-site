@@ -1,26 +1,22 @@
-<script>
-    import { browser } from "$app/env";
+<script lang="ts">
+	import Auth from '$lib/components/Auth.svelte';
+	import { currentSite } from '$lib/stores/currentSite';
 
-    import { goto } from "$app/navigation";
-
-    import { supabase } from "$lib/supabase/client";
-    import { session } from "$lib/supabase/stores/session";
-
-    const signOut = () => {
-        supabase.auth.signOut()
-    }
-
-    if (browser)
-        if ($session == null && !window.location.pathname.startsWith("/auth")) goto("/auth/login?redirect=" + window.location.pathname)
+	import { profile } from '$lib/supabase/stores/profile';
+	import { user } from '$lib/supabase/stores/user';
 </script>
 
-<div class="container">
-    {#if $session}
-        <div>hi</div>
-        <div>{JSON.stringify(supabase.auth.session())}</div>
-        <button on:click={signOut}>Log Out</button>
-    {:else}
-        hello
-        <button on:click={() => goto("/auth/login")}>Login</button>
-    {/if}
+<div>
+	{#if $user}
+		{#if $profile}
+			<div class="container p-6">
+				<h2>Name: {$currentSite?.site_info.title}</h2>
+				<p>Tagline: {$currentSite?.site_info.tagline}</p>
+			</div>
+		{:else}
+			No Profile
+		{/if}
+	{:else}
+		<Auth />
+	{/if}
 </div>

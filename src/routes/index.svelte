@@ -1,7 +1,7 @@
 <script lang="ts">
     import underConstruction from "$lib/assets/under-construction.svg"
 
-    import Section from "$lib/Section.svelte"
+    import Section from "$lib/components/Section.svelte"
 
     let open = false
 
@@ -37,7 +37,7 @@
 
                 <li class="cursor-pointer ml-16 mr-2 border-b-4 border-transparent pt-1 hover:border-black hover:pt-[8px] hover:pb-1 duration-150">Logga in</li>
 
-                <button class="px-6 py-3 ml-2 border-4 -rotate-2 hover:rotate-0 border-black hard-shadow bg-yellow-400">Kontakt</button>
+                <button class="px-6 py-3 ml-2 border-4 -rotate-2 hover:rotate-0 border-black hard-shadow hover:shadow-none bg-yellow-400">Kontakt</button>
 
                 <div class="-z-10 absolute -right-[150px] -top-[125px] w-[400px] h-[250px] bg-emerald-500"/>
                 <div class="-z-10 absolute -right-[150px] -top-[125px] w-[400px] h-[250px] border-8 border-black" style="transform: rotate({10 + y * .036}deg);"/>
@@ -50,7 +50,7 @@
     <h1 class="font-paytone text-center text-6xl mb-6">Vi skapar moderna sidor<br>utan att skada din plånbok</h1>
     <p class="font-mulish font-bold text-xl text-center mb-6">Att se bra ut online ska inte kosta en förmögenhet.<br>Kontakta oss idag för att få eran nya makeover!</p>
 
-    <button class="px-8 py-4 text-xl font-mulish font-bold border-4 rotate-2 hover:rotate-0 border-black hard-shadow bg-red-400">Kontakt</button>
+    <button class="px-8 py-4 text-xl font-mulish font-bold border-4 rotate-2 hover:rotate-0 border-black hard-shadow hover:shadow-none bg-red-400">Kontakt</button>
     
     <div class="absolute -left-[150px] -bottom-[150px] -rotate-[17deg] w-[550px] h-[450px] bg-sky-400"/>
     <div class="absolute -left-[150px] w-[550px] h-[450px] border-4 border-black" style="bottom: {y * -.01 - 150}px;transform: rotate({-26 + y * -.01}deg);"/>

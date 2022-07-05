@@ -37,6 +37,7 @@
   "type": "module",
   "dependencies": {
     "@supabase/gotrue-js": "^1.22.13",
-    "@supabase/supabase-js": "^1.35.2"
+    "@supabase/supabase-js": "^1.35.2",
+    "svelte-select": "^4.4.7"
   }
 }

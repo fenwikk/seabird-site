@@ -44,7 +44,3 @@ input.field {
 
     @apply duration-150
 }
-
-.hard-shadow:hover {
-    box-shadow: 0px 0px black;
-}
