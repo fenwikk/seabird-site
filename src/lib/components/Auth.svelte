@@ -8,7 +8,7 @@
 	const handleLogin = async () => {
 		try {
 			loading = true;
-			const { error } = await supabase.auth.signIn({ email }, { redirectTo: "http://localhost:3000/portal"});
+			const { error } = await supabase.auth.signIn({ email }, { redirectTo: location.href});
 			if (error) throw error;
 			alert('Check your email for the login link!');
 		} catch (error: any) {
