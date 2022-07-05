@@ -14,7 +14,8 @@ export type Profile = {
 export type Site = {
     id: string,
     site_info: SiteData,
-    admins: string[]
+    admins: string[],
+    pages: Page[]
 }
 
 export type SiteData = {
@@ -22,4 +23,23 @@ export type SiteData = {
     tagline: string,
     ico?: string,
     ico_url?: string
+}
+
+export interface Page {
+  slug: string
+  title: string
+  description: string
+  use_tagline: boolean
+  sections: Section[]
+}
+
+export interface Section {
+  heading: string
+  body: string
+  ctas?: CTA[]
+}
+
+export interface CTA {
+  text: string
+  url: string
 }
