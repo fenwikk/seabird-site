@@ -6,17 +6,7 @@
 	import { user } from '$lib/supabase/stores/user';
 </script>
 
-<div>
-	{#if $user}
-		{#if $profile}
-			<div class="container p-6">
-				<h2>Name: {$currentSite?.site_info.title}</h2>
-				<p>Tagline: {$currentSite?.site_info.tagline}</p>
-			</div>
-		{:else}
-			No Profile
-		{/if}
-	{:else}
-		<Auth />
-	{/if}
+<div class="container p-6">
+	<h2>Name: {$currentSite?.site_info.title}</h2>
+	<p>Tagline: {$currentSite?.site_info.tagline}</p>
 </div>
