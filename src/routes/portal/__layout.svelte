@@ -64,6 +64,8 @@
 	import { browser } from "$app/env";
 	import { page } from "$app/stores";
 
+	let selectFocused = false;
+
 	let items = $sites.map((site, i) => {
 		return { value: i, label: site.site_info.title };
 	});
@@ -106,13 +108,16 @@
 						<div class="flex items-center">
 							<img src={portal} class="w-12 h-12" alt="" />
 							<div class="mx-5">
-								<div class="w-[1px] h-8 rotate-12 bg-black/25" />
+								<div class="w-[2px] h-8 rotate-12 rounded-full bg-black" />
 							</div>
-							<div class="select w-52">
+							<div class="select w-52 mt-0 ml-0 duration-150 {selectFocused ? "" : "hover:mt-1 hover:ml-1"}">
 								<Select
-									{items}
-									value={$sites.findIndex((value) => $page.params.siteId == value.id)}
+									bind:items
 									Icon={SelectIcon}
+									bind:isFocused={selectFocused}
+									containerClasses={selectFocused
+										? "hard-shadow"
+										: "duration-150 hard-shadow hover:shadow-none"}
 									iconProps={{ ico: $currentSite?.site_info.ico_url }}
 									isClearable={false}
 									showIndicator={true}
@@ -126,19 +131,19 @@
 						<ul class="flex">
 							<li
 								on:click={() => goto("/portal/" + $currentSite?.id)}
-								class="border-b-2 border-transparent hover:border-black py-2 mx-3"
+								class="border-b-2 border-transparent hover:border-black py-2 mx-3 cursor-pointer"
 							>
 								Home
 							</li>
 							<li
 								on:click={() => goto("/portal/" + $currentSite?.id + "/info")}
-								class="border-b-2 border-transparent hover:border-black py-2 mx-3"
+								class="border-b-2 border-transparent hover:border-black py-2 mx-3 cursor-pointer"
 							>
 								Site Info
 							</li>
 							<li
 								on:click={() => goto("/portal/" + $currentSite?.id + "/pages")}
-								class="border-b-2 border-transparent hover:border-black py-2 mx-3"
+								class="border-b-2 border-transparent hover:border-black py-2 mx-3 cursor-pointer"
 							>
 								Pages
 							</li>
