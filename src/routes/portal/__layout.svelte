@@ -54,7 +54,7 @@
 	import { currentSite } from "$lib/stores/currentSite";
 	import { sites } from "$lib/stores/sites";
 
-	import blob from "$lib/assets/blob.png";
+	import portal from "$lib/assets/portal.png";
 	import chevron from "$lib/assets/chevron.png";
 	import SelectIcon from "$lib/components/SelectIcon.svelte";
 	import { goto } from "$app/navigation";
@@ -104,7 +104,7 @@
 				<div class="container">
 					<div class="py-4 flex items-center">
 						<div class="flex items-center">
-							<img src={blob} class="w-12 h-12" alt="" />
+							<img src={portal} class="w-12 h-12" alt="" />
 							<div class="mx-5">
 								<div class="w-[1px] h-8 rotate-12 bg-black/25" />
 							</div>
