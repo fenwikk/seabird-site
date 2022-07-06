@@ -10,23 +10,28 @@ declare namespace App {
 }
 
 declare module "svelte-scrollto" {
-	type easingFunc = (t: number) => number
+	type easingFunc = (t: number) => number;
 
-	type optionFunc = (element: string, { x, y }: { x: number, y: number }) => void
+	type optionFunc = (element: string, { x, y }: { x: number; y: number }) => void;
 
 	type Options = {
-		element: string,
-		container?: string,
-		duration?: number,
-		delay?: number,
-		offset?: number,
-		easing?: easingFunc,
-		onStart?: optionFunc,
-		onDone?: optionFunc,
-		onAborting?: optionFunc,
-		scrollX?: bool,
-		scrollY?: bool
+		element: string;
+		container?: string;
+		duration?: number;
+		delay?: number;
+		offset?: number;
+		easing?: easingFunc;
+		onStart?: optionFunc;
+		onDone?: optionFunc;
+		onAborting?: optionFunc;
+		scrollX?: bool;
+		scrollY?: bool;
 	};
 
-	declare function scrollTo(options: Options): void
+	declare function scrollTo(options: Options): void;
 }
+
+type EndpointOutput<T = never> = {
+	message?: string;
+	data?: T;
+};

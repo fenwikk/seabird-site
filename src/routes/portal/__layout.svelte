@@ -1,10 +1,16 @@
 <script lang="ts" context="module">
-	import type { LoadOutput } from "@sveltejs/kit";
+	import type { Load, LoadOutput } from "@sveltejs/kit";
 	import { profile } from "$lib/supabase/stores/profile";
 	import { supabase, type Profile, type Site } from "$lib/supabase/client";
 
-	export const load = async (): Promise<LoadOutput> => {
-		const user = supabase.auth.user();
+	export const load: Load = async ({ session, fetch }) => {
+		let user: User | null
+		
+
+		if (browser) {
+			user = supabase.auth.user()
+		} else {
+		}
 
 		if (user) {
 			let { data, error, status } = await supabase
@@ -63,6 +69,9 @@
 	import { dev_id } from "$lib/stores/env";
 	import { browser } from "$app/env";
 	import { page } from "$app/stores";
+	import Banner from "$lib/components/Banner.svelte";
+	import { decrypt } from "$lib/crypto";
+import type { Session, User } from "@supabase/supabase-js";
 
 	let items = $sites.map((site, i) => {
 		return { value: i, label: site.site_info.title };
@@ -102,7 +111,7 @@
 		{#if $profile || !browser}
 			<div class="border-b">
 				<div class="container">
-					<div class="py-4 flex items-center">
+					<div class="py-4 flex items-center justify-between">
 						<div class="flex items-center">
 							<img src={blob} class="w-12 h-12" alt="" />
 							<div class="mx-5">
@@ -120,6 +129,10 @@
 									on:select={handleSelect}
 								/>
 							</div>
+						</div>
+
+						<div>
+							<button on:click={() => supabase.auth.signOut()}>Log Out</button>
 						</div>
 					</div>
 					{#if $currentSite}
