@@ -1,64 +1,67 @@
 <script lang="ts" context="module">
-	import type { LoadOutput } from '@sveltejs/kit';
-	import { profile } from '$lib/supabase/stores/profile';
-	import { supabase, type Profile, type Site } from '$lib/supabase/client';
+	import type { LoadOutput } from "@sveltejs/kit";
+	import { profile } from "$lib/supabase/stores/profile";
+	import { supabase, type Profile, type Site } from "$lib/supabase/client";
 
 	export const load = async (): Promise<LoadOutput> => {
 		const user = supabase.auth.user();
 
 		if (user) {
 			let { data, error, status } = await supabase
-				.from('profiles')
+				.from("profiles")
 				.select()
-				.eq('id', user.id)
+				.eq("id", user.id)
 				.single();
 
 			if (error && status !== 406) throw error;
 
-			console.log('data');
+			console.log("data");
 			profile.set(data as Profile);
 		}
 
-		let { data, error, status } = await supabase.from('sites').select();
+		let { data, error, status } = await supabase.from("sites").select();
 
-		let fetchedSites = data as Site[];
+		const fetchedSites = data as Site[];
+		let userSites: Site[] = [];
 
 		for (let i = 0; i < fetchedSites.length; i++) {
 			const site = fetchedSites[i];
 
-			const fetchedData = supabase.storage
-				.from('site-images')
-				.getPublicUrl(site.site_info.ico || 'favicon.png');
+			if (site.admins.find((value) => value == user?.id)) {
+				const fetchedData = supabase.storage
+					.from("site-images")
+					.getPublicUrl(site.site_info.ico || "favicon.png");
 
-			fetchedSites[i].site_info.ico_url = fetchedData.publicURL || '';
+				site.site_info.ico_url = fetchedData.publicURL || "";
+
+                userSites.push(site)
+			}
 		}
 
-		currentSite.set(fetchedSites[0]);
+		currentSite.set(userSites[0]);
+        sites.set(userSites)
 
 		if (error && status !== 406) throw error;
 
 		return {
 			props: {
-				fetchedSites
 			}
 		};
 	};
 </script>
 
 <script lang="ts">
-	import { user } from '$lib/supabase/stores/user';
-	import Select from 'svelte-select';
-	import { currentSite } from '$lib/stores/currentSite';
-	import { sites } from '$lib/stores/sites';
+	import { user } from "$lib/supabase/stores/user";
+	import Select from "svelte-select";
+	import { currentSite } from "$lib/stores/currentSite";
+	import { sites } from "$lib/stores/sites";
 
-	import blob from '$lib/assets/blob.png';
-	import chevron from '$lib/assets/chevron.png';
-	import SelectIcon from '$lib/components/SelectIcon.svelte';
-	import { goto } from '$app/navigation';
-	import Auth from '$lib/components/Auth.svelte';
-
-	export let fetchedSites: Site[];
-	sites.set(fetchedSites);
+	import blob from "$lib/assets/blob.png";
+	import chevron from "$lib/assets/chevron.png";
+	import SelectIcon from "$lib/components/SelectIcon.svelte";
+	import { goto } from "$app/navigation";
+	import Auth from "$lib/components/Auth.svelte";
+import { get } from "svelte/store";
 
 	let items = $sites.map((site, i) => {
 		return { value: i, label: site.site_info.title };
@@ -68,20 +71,23 @@
 		currentSite.set($sites[event.detail.value]);
 	}
 
-	user.set(supabase.auth.user());
+	const authUser = supabase.auth.user();
+	if (authUser) user.set(authUser);
 
 	supabase.auth.onAuthStateChange(async (_, session) => {
-		user.set(session?.user);
-
-		let { data, error, status } = await supabase
-			.from('profiles')
-			.select()
-			.eq('id', session?.user?.id)
-			.single();
-
-		if (error && status !== 406) throw error;
-
-		profile.set(data as Profile);
+		if (session && session.user) {
+            user.set(session.user);
+    
+            let { data, error, status } = await supabase
+                .from("profiles")
+                .select()
+                .eq("id", session?.user?.id)
+                .single();
+    
+            if (error && status !== 406) throw error;
+    
+            profile.set(data as Profile);
+        }
 	});
 </script>
 
@@ -116,19 +122,19 @@
 					</div>
 					<ul class="flex">
 						<li
-							on:click={() => goto('/portal/')}
+							on:click={() => goto("/portal/")}
 							class="border-b-2 border-transparent hover:border-black py-2 mx-3"
 						>
 							Home
 						</li>
 						<li
-							on:click={() => goto('/portal/info')}
+							on:click={() => goto("/portal/info")}
 							class="border-b-2 border-transparent hover:border-black py-2 mx-3"
 						>
 							Site Info
 						</li>
 						<li
-							on:click={() => goto('/portal/pages')}
+							on:click={() => goto("/portal/pages")}
 							class="border-b-2 border-transparent hover:border-black py-2 mx-3"
 						>
 							Pages
