@@ -127,6 +127,12 @@
 						>
 							Site Info
 						</li>
+						<li
+							on:click={() => goto('/portal/pages')}
+							class="border-b-2 border-transparent hover:border-black py-2 mx-3"
+						>
+							Pages
+						</li>
 					</ul>
 				</div>
 			</div>
