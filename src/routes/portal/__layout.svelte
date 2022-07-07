@@ -147,6 +147,12 @@
 							>
 								Pages
 							</li>
+							<li
+								on:click={() => goto("/portal/" + $currentSite?.id + "/data")}
+								class="border-b-2 border-transparent hover:border-black py-2 mx-3 cursor-pointer"
+							>
+								Data
+							</li>
 						</ul>
 					{/if}
 				</div>
