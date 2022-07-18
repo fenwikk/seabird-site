@@ -153,15 +153,6 @@
 							>
 								Data
 							</li>
-							
-							{#if $currentSite?.site_data.hasBlog}
-								<li
-									on:click={() => goto("/portal/" + $currentSite?.id + "/posts")}
-									class="border-b-2 border-transparent hover:border-black py-2 mx-3 cursor-pointer"
-								>
-									Posts
-								</li>
-							{/if}
 						</ul>
 					{/if}
 				</div>
