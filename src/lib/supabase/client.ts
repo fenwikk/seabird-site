@@ -16,6 +16,7 @@ export interface Site {
 	site_info: SiteInfo;
 	admins: string[];
 	pages: Page[];
+	blog_posts: Post[];
 	data: SiteData;
 }
 
@@ -24,6 +25,7 @@ export type SiteInfo = {
 	tagline: string;
 	ico?: string;
 	ico_url?: string;
+	hasBlog: boolean;
 };
 
 export interface Page {
@@ -43,6 +45,13 @@ export interface Section {
 export interface CTA {
 	text: string;
 	url: string;
+}
+
+export interface Post {
+	slug: string;
+	title: string;
+	description: string;
+	body: string;
 }
 
 export interface SiteData {
