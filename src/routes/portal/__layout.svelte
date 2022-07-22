@@ -15,7 +15,6 @@
 
 			if (error && status !== 406) throw error;
 
-			console.log("data");
 			profile.set(data as Profile);
 		}
 
@@ -136,10 +135,10 @@
 								Home
 							</li>
 							<li
-								on:click={() => goto("/portal/" + $currentSite?.id + "/info")}
+								on:click={() => goto("/portal/" + $currentSite?.id + "/settings")}
 								class="border-b-2 border-transparent hover:border-black py-2 mx-3 cursor-pointer"
 							>
-								Site Info
+								Settings
 							</li>
 							<li
 								on:click={() => goto("/portal/" + $currentSite?.id + "/pages")}
@@ -154,7 +153,7 @@
 								Data
 							</li>
 							
-							{#if $currentSite?.site_data.hasBlog}
+							{#if $currentSite?.site_info.hasBlog}
 								<li
 									on:click={() => goto("/portal/" + $currentSite?.id + "/posts")}
 									class="border-b-2 border-transparent hover:border-black py-2 mx-3 cursor-pointer"

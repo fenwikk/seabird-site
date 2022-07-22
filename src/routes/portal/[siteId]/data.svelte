@@ -49,7 +49,6 @@
 		const meta = $currentSite?.data.dataMeta[key];
 		const variable = $currentSite?.data.data[key] as any;
 
-		console.log(meta)
 		data.push(anyToField(key, variable, meta));
 	}
 </script>

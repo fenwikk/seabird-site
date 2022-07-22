@@ -24,21 +24,6 @@
 		}
 	};
 
-	const handleOnSectionInput = (
-		postIndex: number,
-		sectionIndex: number,
-		property: 'heading' | 'body',
-		value: string
-	) => {
-		const section = unsavedPosts[postIndex].sections[sectionIndex];
-
-		if (property == 'heading') {
-			section.heading = value;
-		} else if (property == 'body') {
-			section.body = value;
-		}
-	};
-
 	const handleSave = async () => {
 		loading = true;
 
@@ -62,6 +47,8 @@
 		loading = false;
 		location.reload();
 	};
+
+	console.log($currentSite)
 </script>
 
 <form class="" on:submit|preventDefault={handleSave}>

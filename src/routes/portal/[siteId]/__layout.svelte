@@ -16,10 +16,8 @@ import { profile } from "$lib/supabase/stores/profile";
 		const fetchedSites = data as Site[];
 
 		const site = fetchedSites.find((value) => {
-            console.log
             return value.id == params.siteId
         });
-		console.log(site);
 
 		let status = 200;
 
